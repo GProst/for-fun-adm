@@ -1,3 +1,9 @@
 import 'babel-polyfill'
+import ReactDOM from 'react-dom'
+import React from 'react'
 
-console.log('Hello world!')
+import Root from './Root'
+
+ReactDOM.render((
+  <Root />
+), document.getElementById('root'))
