@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 
 function _isVendor (module) {
-  return module.context && module.context.indexOf('node_modules') !== -1 // TODO: indexOf & check what is module & context objs
+  return module.context && module.context.includes('node_modules')
 }
 
 module.exports = {
@@ -18,16 +18,10 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   plugins: [
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'common',
-    //   minChunks: function (module, count) {
-    //     return (_isCSS(module) || !_isVendor(module)) && count >= 2 // TODO: check what is count and delete then
-    //   }
-    // }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       chunks: ['app'],
-      minChunks: function (module) {
+      minChunks: (module) => {
         return _isVendor(module)
       }
     }),
