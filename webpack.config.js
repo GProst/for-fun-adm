@@ -1,4 +1,6 @@
 const webpack = require('webpack')
+const WebpackChunkHash = require('webpack-chunk-hash')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
 function _isVendor (module) {
@@ -12,11 +14,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
-    filename: '[name].js'
+    filename: '[name].[chunkhash].js'
   },
   resolve: {
     extensions: ['.js', '.jsx']
   },
+  devtool: 'source-map',
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -25,9 +28,20 @@ module.exports = {
         return _isVendor(module)
       }
     }),
+
     process.env.NODE_ENV === 'production'
       ? new webpack.HashedModuleIdsPlugin()
-      : new webpack.NamedModulesPlugin()
+      : new webpack.NamedModulesPlugin(),
+
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: 'index.html',
+      inject: 'body',
+      cashe: true,
+      showErrors: true
+    }),
+
+    new WebpackChunkHash()
   ],
   module: {
     rules: [
@@ -52,5 +66,8 @@ module.exports = {
         ]
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true
   }
 }
