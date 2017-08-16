@@ -9,12 +9,17 @@ function _isVendor (module) {
 
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: [
+      'babel-polyfill',
+      'react-hot-loader/patch',
+      './src/index.js'
+    ]
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[hash].js',
+    chunkFilename: '[name].[chunkhash].js'
   },
   resolve: {
     extensions: ['.js', '.jsx']
@@ -66,8 +71,5 @@ module.exports = {
         ]
       }
     ]
-  },
-  devServer: {
-    historyApiFallback: true
   }
 }

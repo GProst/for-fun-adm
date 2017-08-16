@@ -12,6 +12,9 @@
   },
   "author": "GProst a.k.a German Prostakov <gprostmail@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --port 3000 --output-public-path=\"http://localhost:3000/\" --public=\"localhost:3000/\" --hot --inline"
+  },
   "bugs": {
     "url": "https://github.com/GProst/for-fun-adm/issues"
   },
@@ -41,6 +44,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
+    "react-hot-loader": "^3.0.0-beta.7",
     "webpack": "^3.5.5",
     "webpack-chunk-hash": "^0.4.0",
     "webpack-dev-server": "^2.7.1"
