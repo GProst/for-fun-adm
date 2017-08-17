@@ -2,13 +2,16 @@ const webpack = require('webpack')
 const WebpackChunkHash = require('webpack-chunk-hash')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin')
 const path = require('path')
 
 function _isVendor (module) {
   return module.context && module.context.includes('node_modules')
 }
 
-module.exports = {
+const isProd = process.env.NODE_ENV === 'production'
+
+const config = {
   entry: {
     app: [
       'babel-polyfill',
@@ -41,7 +44,7 @@ module.exports = {
       }
     }),
 
-    process.env.NODE_ENV === 'production'
+    isProd
       ? new webpack.HashedModuleIdsPlugin()
       : new webpack.NamedModulesPlugin(),
 
@@ -62,10 +65,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
-            options: {
-              presets: ['env']
-            }
+            loader: 'babel-loader'
           },
           {
             loader: 'eslint-loader'
@@ -83,3 +83,11 @@ module.exports = {
     ]
   }
 }
+
+if (isProd) {
+  config.plugins.push(
+    new UglifyWebpackPlugin()
+  )
+}
+
+module.exports = config
