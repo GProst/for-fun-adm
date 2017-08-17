@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const WebpackChunkHash = require('webpack-chunk-hash')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const path = require('path')
 
 function _isVendor (module) {
@@ -12,7 +13,7 @@ module.exports = {
     app: [
       'babel-polyfill',
       'react-hot-loader/patch',
-      './src/index.js'
+      './src/index.jsx'
     ]
   },
   output: {
@@ -26,6 +27,12 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
+    new CleanWebpackPlugin(['dist'], {
+      root: path.join(__dirname),
+      verbose: true,
+      dry: false
+    }),
+
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       chunks: ['app'],
@@ -55,7 +62,10 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            options: {
+              presets: ['env']
+            }
           },
           {
             loader: 'eslint-loader'
