@@ -86,6 +86,7 @@ const config = {
 
 if (isProd) {
   config.plugins.push(
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new UglifyWebpackPlugin()
   )
 }
