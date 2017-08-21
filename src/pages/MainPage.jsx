@@ -2,11 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
+import requireAdmin from '../hocs/requireAdmin'
+
 const Wrapper = styled.div`
   color: blue;
 `
 
-export default class MainPage extends React.Component {
+class MainPage extends React.Component {
   render () {
     return (
       <Wrapper>
@@ -19,3 +21,5 @@ export default class MainPage extends React.Component {
     )
   }
 }
+
+export default requireAdmin(MainPage)

@@ -2,11 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 
+import requireNoAdmin from '../hocs/requireNoAdmin'
+
 const Wrapper = styled.div`
   color: green;
 `
 
-export default class LoginPage extends React.Component {
+class LoginPage extends React.Component {
   render () {
     return (
       <Wrapper>
@@ -19,3 +21,5 @@ export default class LoginPage extends React.Component {
     )
   }
 }
+
+export default requireNoAdmin(LoginPage)
