@@ -24,6 +24,7 @@
   "homepage": "https://github.com/GProst/for-fun-adm#readme",
   "dependencies": {
     "history": "^4.6.3",
+    "prop-types": "^15.5.10",
     "react": "^16.0.0-beta.5",
     "react-dom": "^16.0.0-beta.5",
     "react-redux": "^5.0.6",
