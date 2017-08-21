@@ -13,13 +13,9 @@ import theme from './theme'
 import MainPage from './pages/MainPage'
 import LoginPage from './pages/LoginPage'
 
-// TODO: what is that styles in html?
 injectGlobal`
   html {
     font-family: sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
   }
 
   html.wf-active {
