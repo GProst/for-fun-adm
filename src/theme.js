@@ -4,7 +4,9 @@ export const breakpointValues = { // TODO
 }
 
 const theme = {
-  colors: {},
+  colors: { // TODO: palette
+    grey: '#eee'
+  },
   breakpoints: {
     lg: `(min-width: ${breakpointValues.lgStart}px)`,
     ltLg: `(max-width: ${breakpointValues.lgStart - 1}px)`,

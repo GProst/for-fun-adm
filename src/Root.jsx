@@ -11,13 +11,15 @@ import store from './redux/store'
 import theme from './theme'
 
 import MainPage from './pages/MainPage'
-import LoginPage from './pages/LoginPage'
+import LoginPage from './pages/LoginPage/index'
 
 injectGlobal`
   html {
+    font-size: 16px;
     font-family: sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    ${''/* TODO: font-size for smaller resolutions */}
   }
 
   html.wf-active {
