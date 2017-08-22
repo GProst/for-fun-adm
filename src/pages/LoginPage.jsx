@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import Button from 'material-ui/Button'
 
 import requireNoAdmin from '../hocs/requireNoAdmin'
 
@@ -14,9 +15,9 @@ class LoginPage extends React.Component {
       <Wrapper>
         You are in Login page!
         <br />
-        <Link to='/'>
+        <Button component={Link} to='/'>
           Go to Main page.
-        </Link>
+        </Button>
       </Wrapper>
     )
   }

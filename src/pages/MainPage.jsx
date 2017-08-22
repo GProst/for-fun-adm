@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import Button from 'material-ui/Button'
 
 import requireAdmin from '../hocs/requireAdmin'
 
@@ -14,9 +15,9 @@ class MainPage extends React.Component {
       <Wrapper>
         You are in Main page!
         <br />
-        <Link to='/login'>
+        <Button component={Link} to='/login'>
           Go to Login page.
-        </Link>
+        </Button>
       </Wrapper>
     )
   }
