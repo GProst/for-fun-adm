@@ -11,7 +11,7 @@ class LoginPage extends React.Component {
   render () {
     return (
       <Wrapper>
-        <Form elevation={4}>
+        <Form>
           <Header>
             <Typography type='display1'>
               You are in Login page!
