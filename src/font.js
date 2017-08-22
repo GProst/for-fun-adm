@@ -2,6 +2,6 @@ import WebFont from 'webfontloader'
 
 WebFont.load({
   google: {
-    families: ['Roboto:300,400,500,bold']
+    families: ['Roboto:300,400,500']
   }
 })
