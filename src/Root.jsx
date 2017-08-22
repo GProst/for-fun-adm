@@ -16,10 +16,12 @@ import LoginPage from './pages/LoginPage'
 injectGlobal`
   html {
     font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html.wf-active {
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: "Roboto", sans-serif;
   }
 
   html {
