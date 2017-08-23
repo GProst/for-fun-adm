@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles'
 import createPalette from 'material-ui/styles/palette'
 
-import {ThemeType, themes} from './constants'
+import {ThemeType, themes, mediaQuery, breakpoints} from './constants'
 
 const connector = connect(state => ({
   theme: state.theme
@@ -23,10 +23,13 @@ class ThemeProvider extends React.Component {
     const theme = themes.get(themeType)
 
     const muiTheme = createMuiTheme({
+      ...theme,
       palette: createPalette({
         ...theme.palette,
         type: themeType
-      })
+      }),
+      mediaQuery,
+      breakpoints
     })
 
     console.log('muiTheme', muiTheme)

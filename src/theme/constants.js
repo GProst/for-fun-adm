@@ -59,9 +59,24 @@ const lightTheme = {
   }
 }
 
+const breakpoints = { // TODO
+  lgStart: 1366, // large
+  mdStart: 1024 // middle
+}
+
+const mediaQuery = {
+  lg: `(min-width: ${breakpoints.lgStart}px)`,
+  ltLg: `(max-width: ${breakpoints.lgStart - 1}px)`,
+  md: `(min-width: ${breakpoints.mdStart}px) and (max-width: ${breakpoints.lgStart - 1}px)`,
+  ltMd: `(max-width: ${breakpoints.mdStart - 1}px)`,
+  gtMd: `(min-width: ${breakpoints.mdStart}px)`
+}
+
 const themes = new Map([[ThemeType.light, lightTheme]])
 
 export {
   ThemeType,
-  themes
+  themes,
+  mediaQuery,
+  breakpoints
 }
