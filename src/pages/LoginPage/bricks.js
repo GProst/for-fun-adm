@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Paper from 'material-ui/Paper'
 
 const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.grey};
+  background-color: ${props => props.theme.palette.background.default};
   width: 100%;
   height: 100%;
   display: flex;
@@ -13,13 +13,13 @@ const Wrapper = styled.div`
 Wrapper.displayName = 'Wrapper'
 
 const Form = styled(Paper)`
-  width: 20rem;
-  height: 40rem;
+  width: 32rem;
+  height: 25rem;
 `
 Form.displayName = 'Form'
 
 const Header = styled.div`
-  background-color: #e5e5ff;
+  background-color: ${props => props.theme.palette.primary['500']};
   padding: 1.5rem 3rem;
 `
 Header.displayName = 'Header'

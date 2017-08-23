@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 
@@ -14,12 +13,12 @@ class LoginPage extends React.Component {
         <Form>
           <Header>
             <Typography type='display1'>
-              You are in Login page!
+              Login to proceed
             </Typography>
           </Header>
           <MainContent>
-            <Button component={Link} to='/'>
-              Go to Main page.
+            <Button color='primary'>
+              Login
             </Button>
           </MainContent>
         </Form>
