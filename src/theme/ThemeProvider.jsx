@@ -32,8 +32,6 @@ class ThemeProvider extends React.Component {
       breakpoints
     })
 
-    console.log('muiTheme', muiTheme)
-
     this.setState({
       theme: muiTheme
     })
