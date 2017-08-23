@@ -1,6 +1,6 @@
 const ThemeType = {
   light: 'light',
-  dark: 'dark'
+  dark: 'dark' // TODO
 }
 
 const lightTheme = {

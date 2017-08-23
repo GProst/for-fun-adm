@@ -1,2 +1,3 @@
-export {default as auth} from './auth/index'
-export {default as profile} from './admin/index'
+export {default as auth} from './auth'
+export {default as profile} from './admin'
+export {default as theme} from './theme'
