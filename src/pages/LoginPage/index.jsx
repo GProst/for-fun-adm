@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from 'material-ui/Button'
-import Typography from 'material-ui/Typography'
+
+import Typography from '../../components/atoms/Typography'
 
 import requireNoAdmin from '../../hocs/requireNoAdmin'
 
@@ -12,7 +13,7 @@ class LoginPage extends React.Component {
       <Wrapper>
         <Form>
           <Header>
-            <Typography type='display1'>
+            <Typography color={{type: 'common', payload: 'white'}} type='display1'>
               Login to proceed
             </Typography>
           </Header>
