@@ -6,7 +6,7 @@ import {Provider} from 'react-redux'
 
 import './font'
 
-import ThemeProvider from './theme/ThemeProvider'
+import {ThemeProvider} from './theme'
 
 import history from './redux/history'
 import store from './redux/store'
