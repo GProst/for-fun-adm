@@ -26,12 +26,25 @@ Header.displayName = 'Header'
 
 const MainContent = styled.div`
   padding: 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `
 MainContent.displayName = 'MainContent'
+
+const Inputs = styled.div`
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+`
+Inputs.displayName = 'Inputs'
 
 export {
   Wrapper,
   Form,
   Header,
-  MainContent
+  MainContent,
+  Inputs
 }
