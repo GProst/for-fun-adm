@@ -5,10 +5,12 @@ import requireNoAdmin from '../../hocs/requireNoAdmin'
 
 import {FieldTypes, isValidField, ErrorTypes} from '../../form'
 
+import Email from 'material-ui-icons/Email'
+import Lock from 'material-ui-icons/Lock'
 import Button from 'material-ui/Button'
 import TextField from 'material-ui/TextField'
 import Typography from '../../components/atoms/Typography'
-import {Wrapper, Form, Header, MainContent, Inputs} from './bricks'
+import {Wrapper, Form, Header, MainContent, Inputs, InputRow, Label} from './bricks'
 
 // TODO: create separate template for the page
 class LoginPage extends React.Component {
@@ -18,13 +20,15 @@ class LoginPage extends React.Component {
         required: true,
         value: '',
         type: FieldTypes.email,
-        error: null
+        error: null,
+        id: 'login-form-email'
       },
       password: {
         required: true,
         value: '',
         type: FieldTypes.password,
-        error: null
+        error: null,
+        id: 'login-form-password'
       }
     }
   }
@@ -114,26 +118,37 @@ class LoginPage extends React.Component {
           </Header>
           <MainContent>
             <Inputs>
-              <TextField
-                error={Boolean(form.email.error)}
-                fullWidth
-                value={form.email.value}
-                label='Email'
-                helperText={form.email.error}
-                onChange={this.onInputChange.bind(this, 'email')}
-                onBlur={this.onInputBlur.bind(this, 'email')}
-              />
-              <TextField
-                type='password'
-                margin='normal'
-                error={Boolean(form.password.error)}
-                fullWidth
-                value={form.password.value}
-                label='Password'
-                helperText={form.password.error}
-                onChange={this.onInputChange.bind(this, 'password')}
-                onBlur={this.onInputBlur.bind(this, 'password')}
-              />
+              <InputRow>
+                <Label htmlFor={form.email.id} error={Boolean(form.email.error)}>
+                  <Email />
+                </Label>
+                <TextField
+                  error={Boolean(form.email.error)}
+                  id={form.email.id}
+                  fullWidth
+                  value={form.email.value}
+                  label='Email'
+                  helperText={form.email.error}
+                  onChange={this.onInputChange.bind(this, 'email')}
+                  onBlur={this.onInputBlur.bind(this, 'email')}
+                />
+              </InputRow>
+              <InputRow>
+                <Label htmlFor={form.password.id} error={Boolean(form.password.error)}>
+                  <Lock />
+                </Label>
+                <TextField
+                  type='password'
+                  id={form.password.id}
+                  error={Boolean(form.password.error)}
+                  fullWidth
+                  value={form.password.value}
+                  label='Password'
+                  helperText={form.password.error}
+                  onChange={this.onInputChange.bind(this, 'password')}
+                  onBlur={this.onInputBlur.bind(this, 'password')}
+                />
+              </InputRow>
             </Inputs>
             <Button raised color='primary' type='submit' disabled={disabled}>
               Login

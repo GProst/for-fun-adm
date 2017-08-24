@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import Paper from 'material-ui/Paper'
 
 const Wrapper = styled.div`
@@ -43,10 +44,31 @@ const Inputs = styled.div`
 `
 Inputs.displayName = 'Inputs'
 
+const InputRow = styled.div`
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  margin-bottom: 1rem;
+`
+InputRow.displayName = 'InputRow'
+
+const Label = styled.label`
+  margin-right: 0.6rem;
+  color: ${props => props.theme.palette.grey['600']};
+  
+  ${props => !props.error && 'margin-top: 18px;'}
+`
+Label.propTypes = {
+  error: PropTypes.bool
+}
+Label.displayName = 'Label'
+
 export {
   Wrapper,
   Form,
   Header,
   MainContent,
-  Inputs
+  Inputs,
+  InputRow,
+  Label
 }
