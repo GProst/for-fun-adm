@@ -14,7 +14,8 @@ Wrapper.displayName = 'Wrapper'
 
 const Form = styled(Paper)`
   width: 32rem;
-  height: 25rem;
+  display: flex;
+  flex-direction: column;
 `
 Form.displayName = 'Form'
 
@@ -25,10 +26,11 @@ const Header = styled.div`
 Header.displayName = 'Header'
 
 const MainContent = styled.div`
-  padding: 1.5rem 3rem;
+  padding: 2rem 3rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
+  flex-grow: 1;
 `
 MainContent.displayName = 'MainContent'
 

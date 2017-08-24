@@ -19,6 +19,12 @@ class LoginPage extends React.Component {
         value: '',
         type: FieldTypes.email,
         error: null
+      },
+      password: {
+        required: true,
+        value: '',
+        type: FieldTypes.password,
+        error: null
       }
     }
   }
@@ -116,6 +122,17 @@ class LoginPage extends React.Component {
                 helperText={form.email.error}
                 onChange={this.onInputChange.bind(this, 'email')}
                 onBlur={this.onInputBlur.bind(this, 'email')}
+              />
+              <TextField
+                type='password'
+                margin='normal'
+                error={Boolean(form.password.error)}
+                fullWidth
+                value={form.password.value}
+                label='Password'
+                helperText={form.password.error}
+                onChange={this.onInputChange.bind(this, 'password')}
+                onBlur={this.onInputBlur.bind(this, 'password')}
               />
             </Inputs>
             <Button raised color='primary' type='submit' disabled={disabled}>
