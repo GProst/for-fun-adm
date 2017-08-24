@@ -4,6 +4,7 @@ import _capitalize from 'lodash-es/capitalize'
 import requireNoAdmin from '../../hocs/requireNoAdmin'
 
 import {FieldTypes, isValidField, ErrorTypes} from '../../form'
+import api from '../../api'
 
 import LoginPageTemplate from '../../templates/LoginPage'
 
@@ -24,7 +25,8 @@ class LoginPage extends React.Component {
         error: null,
         id: 'login-form-password'
       }
-    }
+    },
+    loading: false
   }
 
   checkFieldIsValid (fieldName) {
@@ -65,10 +67,26 @@ class LoginPage extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
+    if (this.state.loading) return
 
     if (this.formIsValid(this.state.form)) {
-      // TODO
-      console.log('submitting')
+      this.setState({
+        loading: true
+      })
+
+      api.login()
+        .then(profile => {
+          // TODO: set profile and token & redirect
+          this.setState({
+            loading: false // TODO: I don't think we need it here
+          })
+        })
+        .catch(() => {
+          // TODO: handle error => show in popup
+          this.setState({
+            loading: false
+          })
+        })
     }
   }
 
@@ -93,7 +111,7 @@ class LoginPage extends React.Component {
   }
 
   render () {
-    const {form} = this.state
+    const {form, loading} = this.state
 
     return (
       <LoginPageTemplate
@@ -101,6 +119,7 @@ class LoginPage extends React.Component {
         onSubmit={this.onSubmit}
         onInputChange={this.onInputChange}
         onInputBlur={this.onInputBlur}
+        loading={loading}
       />
     )
   }

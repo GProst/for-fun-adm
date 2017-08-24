@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import {FieldShape} from '../../form'
 
+import LinearProgress from 'material-ui/Progress/LinearProgress'
 import Email from 'material-ui-icons/Email'
 import Lock from 'material-ui-icons/Lock'
 import Button from 'material-ui/Button'
@@ -16,6 +17,7 @@ class LoginPageTemplate extends React.Component {
       email: FieldShape.isRequired,
       password: FieldShape.isRequired
     }).isRequired,
+    loading: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
     onInputChange: PropTypes.func.isRequired,
     onInputBlur: PropTypes.func.isRequired
@@ -40,7 +42,7 @@ class LoginPageTemplate extends React.Component {
   }
 
   render () {
-    const {form} = this.props
+    const {form, loading} = this.props
     const disabled = this.formShowsErrors(form)
 
     return (
@@ -51,6 +53,7 @@ class LoginPageTemplate extends React.Component {
               Login to proceed
             </Typography>
           </Header>
+          {loading && <LinearProgress color='accent' mode='query' />}
           <MainContent>
             <Inputs>
               <InputRow>
@@ -63,6 +66,7 @@ class LoginPageTemplate extends React.Component {
                   fullWidth
                   value={form.email.value}
                   label='Email'
+                  disabled={loading}
                   helperText={form.email.error}
                   onChange={this.onInputChange.bind(this, 'email')}
                   onBlur={this.onInputBlur.bind(this, 'email')}
@@ -75,6 +79,7 @@ class LoginPageTemplate extends React.Component {
                 <TextField
                   type='password'
                   id={form.password.id}
+                  disabled={loading}
                   error={Boolean(form.password.error)}
                   fullWidth
                   value={form.password.value}
