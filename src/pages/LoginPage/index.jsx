@@ -11,7 +11,11 @@ import {Wrapper, Form, Header, MainContent, Inputs} from './bricks'
 class LoginPage extends React.Component {
   state = {
     form: {
-      email: ''
+      email: {
+        required: true,
+        value: '',
+        error: null
+      }
     }
   }
 
@@ -21,19 +25,43 @@ class LoginPage extends React.Component {
     // TODO
   }
 
-  onInputChange (field, event) {
+  onInputChange (fieldName, event) {
     const {form} = this.state
     const {value} = event.target
 
     this.setState({
       form: {
         ...form,
-        [field]: value
+        [fieldName]: {
+          ...form[fieldName],
+          value,
+          error: null
+        }
       }
     })
   }
 
+  onInputBlur (fieldName, event) {
+    const {form} = this.state
+    const field = form[fieldName]
+
+    if (field.required && !field.value) {
+      const error = fieldName === 'email' ? 'Email field is required' : 'Password is required'
+
+      this.setState({
+        form: {
+          ...form,
+          [fieldName]: {
+            ...field,
+            error
+          }
+        }
+      })
+    }
+  }
+
   render () {
+    const {form} = this.state
     return (
       <Wrapper>
         <Form onSubmit={this.onSubmit} component='form'>
@@ -45,10 +73,13 @@ class LoginPage extends React.Component {
           <MainContent>
             <Inputs>
               <TextField
+                error={Boolean(form.email.error)}
                 fullWidth
-                value={this.state.form.email}
+                value={form.email.value}
                 label='Email'
+                helperText={form.email.error}
                 onChange={this.onInputChange.bind(this, 'email')}
+                onBlur={this.onInputBlur.bind(this, 'email')}
               />
             </Inputs>
             <Button raised color='primary' type='submit'>
